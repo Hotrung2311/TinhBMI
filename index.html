@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BMI - Body Mass Index</title>
+</head>
+<form>
+    <label> Chiều cao [m]:
+        <input id="txt_cao" type="text"/>
+    </label><br/><br/>
+    <label> Cân nặng [kg]:
+        <input id="txt_nang" type="text"/>
+    </label><br/> <br/>
+    <input type="button" value="Tính BMI" onclick="TinhBMI()"/>
+</form>
+<hr/>
+<body>
+    <table border="1" style="width: 300px; border-collapse:  collapse">
+        <tr>
+            <th>BMI</th>
+            <th id="result">Kết quả</th>
+        </tr>
+        <tr>
+            <td>BMI < 18.5</td>
+            <td>BMI < 18.5</td>
+        </tr>
+        <tr>
+            <td>18.5 <= BMI < 25.0</td>
+            <td>18.5 <= BMI < 25.0</td>
+        </tr>
+        <tr>
+            <td>25.0 <= BMI < 30.0</td>
+            <td>25.0 <= BMI < 30.0</td>
+        </tr>
+        <tr>
+            <td>30.0 <= BMI</td>
+            <td>30.0 <= BMI</td>
+        </tr>
+    </table>
+    <script>
+        //let chieucao = document.getElementById("txt_cao").value;
+        //let cannang = document.getElementById("txt_nang").value;
+        let result;
+        let Type;
+        function TinhBMI() {
+            let chieucao = parseFloat(document.getElementById("txt_cao").value);
+            let cannang = parseFloat(document.getElementById("txt_nang").value);
+            result = (cannang / Math.pow(chieucao,2));
+            //document.getElementById("result").innerHTML = Math.round(result*100)/100 + "<br/>" + "(" + Type + ")";
+            if (result < 18)
+                 Type = "Underweight";
+            else if (result < 25)
+                Type = "Normal";
+            else if (result < 30)
+                Type = "Overweight";
+            else
+                Type = "Obese";
+            document.getElementById("result").innerHTML = Math.round(result*100)/100 + "<br/>" + "(" + Type + ")";
+        }
+    </script>
+</body>
+</html>
